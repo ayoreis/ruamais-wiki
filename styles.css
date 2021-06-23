@@ -1,5 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+}
+
+:root {
+    --spacing-extra-small: .5rem;
+    --spacing-small: 1rem;
+    --spacing-medium: 2rem;
+    --spacing-big: 4rem;
+
+    --color-light-main: hsl(360 0% 95% / 1);
+    --color-light-grey: hsl(360 0% 85% / 1);
+
+    --color-dark-main: hsl(360 0% 10% / 1);
+    --color-dark-grey: hsl(360 0% 20% / 1);
+
+    --background-main: var(--color-light-main);
+    --background-grey: var(--color-light-grey);
+
+    --text-color: var(--color-dark-main);
+
+    --border-width: 1px;
+    --border-color: var(--color-dark-main);
+    --border-style: solid;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-main: var(--color-dark-main);
+        --background-grey: var(--color-dark-grey);
+
+        --text-color: var(--color-light-main);
+
+        --border-color: var(--color-light-main);
+    }
+}
+
+body,
+main,
+header,
+footer,
+section,
+p,
+button {
+    display: grid;
+}
+
+li {
+    display: inline-block;
+}
+
+
 body {
     font-size: 18px;
     font-family: serif;
-    background-color: #ffffee;
+    color: var(--text-color);
+    background-color: var(--background-main);
+}
+
+header {
+    padding: var(--spacing-medium);
+}
+
+header > * + * {
+    margin-top: 1em;
+}
+
+section.categories > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    align-content: center;
+    justify-items: center;
+}
+
+section.categories > ul > li {
+    display: block;
+    aling-text
+}
+footer {
+    padding: var(--spacing-medium);
+}
+
+section.posts > ul {
+    columns: 100px;
+    column-gap: var(--spacing-small);
+    padding: var(--spacing-small) var(--spacing-small) var(--spacing-extra-small) var(--spacing-small);
+}
+
+
+
+section.posts > ul > li {
+    text-align: center;
+    break-inside: avoid;
+    margin-bottom: var(--spacing-extra-small);
+    width: 100%;
+}
+
+input {
+    border: var(--border-width) var(--border-style) var(--border-color);
+    padding: var(--spacing-extra-small);
+    -webkit-appearance: none;
+    border-radius: 0 !important;
+    font-size: 18px;
+    font-family: serif;
+    width: clamp(0px, 100%, 200px);
+}
+
+input::placeholder {
+    color: grey;
+}
+
+hr {
+    border: none;
+    border-top: var(--border-width) var(--border-style) var(--border-color);
+}
+
+.hidden,
+.search-hidden,
+.category-hidden {
+    display: none;
 }

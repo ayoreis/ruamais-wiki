@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>Colab Wiki</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <?php
             wp_head();
@@ -12,22 +13,67 @@
     </head>
     <body>
         <header>
+            <p>EN | PT</p>
             <h1>The Colab Wiki.</h1>
+            <p>desc.</p>
+            <div>
+                <label for="search">Search:</label>
+                <input id="search" type="search" class="search" placeholder="Terms, categories, etc.">
+            </div>
         </header>
+
         <main>
-            <h2>Featured posts</h2>
+
+            <section class="categories">
+                <ul>
+                    <li data-category="all">All</li>
+                    <?php
+                        $categories = get_categories(array('hide_empty' => FALSE));
+                        foreach ($categories as $category):
+                    ?>
+                    <li data-category="<?= $category -> slug; ?>"><?= $category -> name; ?></li>
+                    <?php
+                        endforeach;
+                    ?>
+                </ul>
+            </section>
+
             <hr>
-            <h2>Categroires</h2>
-            <ul>
-                <li>Tools</li>
-                <li>Words</li>
-            </ul>
+
+            <section class="posts">
+                <ul>
+                    <?php
+                    $the_query = new WP_Query(array('orderby' => 'title', 'order' => 'ASC'));
+                        if($the_query -> have_posts()):
+                            while($the_query -> have_posts()):
+                                $the_query -> the_post();
+                    ?>
+
+                    <li class="post" data-category="<?php
+                            $categories = get_the_category();
+                            $last = end($categories);
+                            foreach($categories as $category) {
+                                if ($category !== $last) {
+                                    echo $category -> slug . " ";
+                                } else {
+                                    echo $category -> slug;
+                                }
+                            };?>"><a href="<?= the_permalink(); ?>"><?= the_title(); ?></a></li>
+
+                    <?php
+                            endwhile;
+                        endif;
+
+                        wp_reset_postdata();
+                    ?>
+                </ul>
+            </section>
+
         </main>
 
         <hr>
 
-        <footer>
-            <?php get_footer(); ?>
-        </footer>
+        <?php get_footer(); ?>
+
     </body>
 </html>
