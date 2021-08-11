@@ -14,7 +14,7 @@ search.addEventListener('input', () => {
 
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
-    request.send(`action=data_fetch&keyword=${document.querySelector('.search').value}`)
+    request.send(`action=data_fetch&keyword=${search.value}`)
 })
 
 // ./wp-admin/admin-ajax.php

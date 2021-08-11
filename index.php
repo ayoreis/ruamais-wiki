@@ -20,7 +20,7 @@
             <p>desc.</p>
             <div>
                 <label for="search">Search:</label>
-                <input id="search" type="search" class="search" placeholder="Terms, categories, etc." onkeyup="fetch()">
+                <input id="search" type="search" class="search" placeholder="Terms, categories, etc.">
             </div>
         </header>
 
