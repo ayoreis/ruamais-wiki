@@ -1,7 +1,7 @@
-const button = document.querySelector('button')
+const search = document.querySelector('input.search')
 const place = document.querySelector('#datafetch')
 
-button.addEventListener('click', () => {
+search.addEventListener('input', () => {
     const request = new XMLHttpRequest()
 
     request.addEventListener('load', event => {
