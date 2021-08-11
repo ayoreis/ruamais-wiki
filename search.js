@@ -4,11 +4,11 @@ const place = document.querySelector('#datafetch')
 button.addEventListener('click', () => {
     const request = new XMLHttpRequest()
 
-    request.onload = () => {
-        if (request.status === 200) {
-            datafetch.innerHTML = request.responseText
+    request.addEventListener('load', event => {
+        if (event.target.status === 200) {
+            place.innerHTML = event.target.responseText
         }
-    }
+    })
 
     request.open('POST', './wp-admin/admin-ajax.php', true)
 
