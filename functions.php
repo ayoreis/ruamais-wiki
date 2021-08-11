@@ -1,6 +1,6 @@
  <?php
     function wiki_register_styles(){
-        wp_enqueue_style('styles.css styles', get_template_directory_uri() . '/styles.css', array(), 1.0, 'all');
+        wp_enqueue_style('styles.css', get_template_directory_uri() . '/styles.css', array(), 1.0, 'all');
     }
 
     add_action('wp_enqueue_scripts', 'wiki_register_styles');
@@ -23,6 +23,8 @@
     }
 
     add_filter('script_loader_tag', 'add_defer_attribute', 10, 2);
+
+
 
     function header_clean_up() {
 
@@ -121,33 +123,6 @@
 
     // add_action('init', 'custom_post_type', 0 );
 
-
-
-
-
-
-
-
-
-    // add the ajax fetch js
-
-    function ajax_fetch() {
-?>
-        <script type="text/javascript">
-            function fetch() {
-
-
-            }
-        </script>
-<?php
-    }
-
-    add_action('wp_footer', 'ajax_fetch');
-
-
-
-    // the ajax function
-
     function data_fetch(){
 
         $the_query = new WP_Query( array( 'posts_per_page' => -1, 's' => esc_attr( $_POST['keyword'] ), 'post_type' => 'post' ) );
@@ -156,7 +131,9 @@
             while($the_query -> have_posts()):
                 $the_query -> the_post(); ?>
 
-                <a href="<?php echo esc_url( post_permalink() ); ?>"><?php the_title();?></a>
+                <li class="post">
+                    <a href="<?php echo esc_url( post_permalink() ); ?>"><?php the_title();?></a>
+                </li>
 
             <?php
             endwhile;
