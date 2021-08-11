@@ -14,7 +14,6 @@
     </head>
     <body>
         <header>
-            <p>EN | PT</p>
             <h1>The RUA+ Wiki.</h1>
 
             <p>desc.</p>
