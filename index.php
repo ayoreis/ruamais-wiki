@@ -17,8 +17,6 @@
             <p>EN | PT</p>
             <h1>The RUA+ Wiki.</h1>
 
-            <button class="button">Click!</button>
-            
             <p>desc.</p>
             <div>
                 <label for="search">Search:</label>
