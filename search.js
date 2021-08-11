@@ -1,12 +1,12 @@
 const search = document.querySelector('input.search')
-const place = document.querySelector('#datafetch')
+const posts = document.querySelector('section.posts')
 
 search.addEventListener('input', () => {
     const request = new XMLHttpRequest()
 
     request.addEventListener('load', event => {
         if (event.target.status === 200) {
-            place.innerHTML = event.target.responseText
+            posts.innerHTML = event.target.responseText
         }
     })
 

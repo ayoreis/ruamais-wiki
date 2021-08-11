@@ -81,11 +81,6 @@
 
         <hr>
 
-        <div id="datafetch">Search results will appear here</div>
-
-
-        <hr>
-
         <?php get_footer(); ?>
 
     </body>
