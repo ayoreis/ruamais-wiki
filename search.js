@@ -1,11 +1,12 @@
 const button = document.querySelector('button')
+const place = document.querySelector('#datafetch')
 
 button.addEventListener('click', () => {
     const request = new XMLHttpRequest()
 
     request.onload = () => {
         if (request.status === 200) {
-            console.log(request.responseText)
+            datafetch.innerHTML = request.responseText
         }
     }
 
