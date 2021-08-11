@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title>Colab Wiki</title>
+        <title>RUA+ Wiki</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <?php
@@ -14,11 +15,14 @@
     <body>
         <header>
             <p>EN | PT</p>
-            <h1>The Colab Wiki.</h1>
+            <h1>The RUA+ Wiki.</h1>
+
+            <button class="button">Click!</button>
+            
             <p>desc.</p>
             <div>
                 <label for="search">Search:</label>
-                <input id="search" type="search" class="search" placeholder="Terms, categories, etc.">
+                <input id="search" type="search" class="search" placeholder="Terms, categories, etc." onkeyup="fetch()">
             </div>
         </header>
 
@@ -43,7 +47,14 @@
             <section class="posts">
                 <ul>
                     <?php
-                    $the_query = new WP_Query(array('orderby' => 'title', 'order' => 'ASC'));
+                    $the_query = new WP_Query(
+                        array(
+                            'orderby' => 'title',
+                            'order' => 'ASC',
+                            // 'post_type' => 'terms'
+                        )
+                    );
+
                         if($the_query -> have_posts()):
                             while($the_query -> have_posts()):
                                 $the_query -> the_post();
@@ -70,6 +81,11 @@
             </section>
 
         </main>
+
+        <hr>
+
+        <div id="datafetch">Search results will appear here</div>
+
 
         <hr>
 

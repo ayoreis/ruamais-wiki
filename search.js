@@ -1,88 +1,20 @@
-'use strict'
+const button = document.querySelector('button')
 
-const debounce = (func, delay) => {
+button.addEventListener('click', () => {
+    const request = new XMLHttpRequest()
 
-    let timeout
-
-    return (...args) => {
-        if (timeout) {
-            clearTimeout(timeout)
+    request.onload = () => {
+        if (request.status === 200) {
+            console.log(request.responseText)
         }
-
-        timeout = setTimeout(() => {
-            func(...args)
-        }, delay)
     }
-}
 
-const throttle = (func, delay) => {
+    request.open('POST', './wp-admin/admin-ajax.php', true)
 
-    let last = 0
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
-    return (...args) => {
-        const now = new Date().getTime()
-        if (now - last < delay) {
-            return
-        }
+    request.send(`action=data_fetch&keyword=${document.querySelector('.search').value}`)
+})
 
-        last = now
-
-        return func(...args)
-    }
-}
-
-const posts = [...document.querySelectorAll('.post')]
-const search = document.querySelector('.search')
-let searchResults, term, string
-
-search.addEventListener('input', debounce((event) => {
-    term = event.target.value.toLowerCase()
-
-    searchResults = posts.filter((post) => {
-        string = post.innerText.toLowerCase()
-
-        if (term === "") {
-            return
-        } else {
-            return !string.includes(term)
-        }
-    })
-
-    posts.forEach( post => {
-        post.classList.remove('search-hidden')
-    })
-
-    searchResults.forEach( searchResult => {
-        searchResult.classList.add('search-hidden')
-    })
-
-    console.log(term);
-}, 250))
-
-
-
-// /* posts */
-// const buttons = [...document.querySelectorAll('section.categories > ul > li')]
-// let category, postCategories, filterdPosts
-//
-// buttons.forEach( button => {
-//     button.addEventListener('click', debounce((event) => {
-//
-//
-//         category = event.target.dataset.category
-//         console.log(`Category: ${category}`);
-//
-//         posts.forEach( post => {
-//
-//             postCategories = post.dataset.category.split(" ")
-//
-//             console.log(`Post ${posts.indexOf(post)} category: ${postCategories}`)
-//             console.log(`Resuls = ${}`);
-//
-//             console.log("END");
-//         })
-//
-//
-//
-//     }, 250))
-// })
+// ./wp-admin/admin-ajax.php
+// ./wp-content/themes/theme/get.php
