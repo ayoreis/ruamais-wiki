@@ -16,6 +16,3 @@ search.addEventListener('input', () => {
 
     request.send(`action=data_fetch&keyword=${search.value}`)
 })
-
-// ./wp-admin/admin-ajax.php
-// ./wp-content/themes/theme/get.php
