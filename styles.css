@@ -24,7 +24,7 @@
 
     --text-color: var(--color-dark-main);
 
-    --border-width: 1px;
+    --border-width: 1.5px;
     --border-color: var(--color-dark-main);
     --border-style: solid;
 }
@@ -107,9 +107,9 @@ input {
     -webkit-appearance: none;
     border-radius: 0 !important;
     font-size: 18px;
-    font-family: serif;
+    font-family: inherit;
     width: clamp(0px, 100%, 200px);
-    background-color: lightblue;
+    background-color: transparent;
 }
 
 input::placeholder {
