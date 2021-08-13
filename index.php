@@ -32,7 +32,7 @@
                         $categories = get_categories(array('hide_empty' => FALSE));
                         foreach ($categories as $category):
                     ?>
-                    <li data-category="<?= $category -> slug; ?>"><?= $category -> name; ?></li>
+                    <li class="category" data-category="<?= $category -> slug; ?>"><?= $category -> name; ?></li>
                     <?php
                         endforeach;
                     ?>
