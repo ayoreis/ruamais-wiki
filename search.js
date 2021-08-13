@@ -17,4 +17,12 @@ search.addEventListener('input', () => {
     request.send(`action=data_fetch&keyword=${search.value}`)
 })
 
+
+
 const categoryButtons = document.querySelectorAll('li.category')
+
+categoryButtons.forEach( categoryButton => {
+    categoryButton.addEventListener('click', event => {
+
+    })
+})
