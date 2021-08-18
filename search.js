@@ -23,6 +23,6 @@ const categoryButtons = document.querySelectorAll('li.category')
 
 categoryButtons.forEach( categoryButton => {
     categoryButton.addEventListener('click', event => {
-
+        console.log(event.target.dataset.category);
     })
 })
