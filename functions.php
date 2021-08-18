@@ -123,7 +123,7 @@
 
     // add_action('init', 'custom_post_type', 0 );
 
-    function my_search() {
+    function data_fetch() {
 
         $the_query = new WP_Query(
             array(
@@ -150,11 +150,7 @@
         die();
     }
 
-    add_action('wp_ajax_data_fetch', 'my_search');
-    add_action('wp_ajax_nopriv_data_fetch', 'my_search');
-
-    function my_category_filter() {
-
-    }
+    add_action('wp_ajax_data_fetch', 'data_fetch');
+    add_action('wp_ajax_nopriv_data_fetch', 'data_fetch');
 
 ?>

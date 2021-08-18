@@ -14,7 +14,7 @@ search.addEventListener('input', () => {
 
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 
-    request.send(`action=my_search&keyword=${search.value}`)
+    request.send(`action=data_fetch&keyword=${search.value}`)
 })
 
 
