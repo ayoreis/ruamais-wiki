@@ -27,7 +27,7 @@
 
             <section class="categories">
                 <ul>
-                    <li data-category="all">All</li>
+                    <li class="category" data-category="all">All</li>
                     <?php
                         $categories = get_categories(array('hide_empty' => FALSE));
                         foreach ($categories as $category):
