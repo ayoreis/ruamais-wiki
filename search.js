@@ -4,7 +4,6 @@ const posts = document.querySelector('section.posts')
 search.addEventListener('input', () => {
 
     // const request = new XMLHttpRequest()
-    //
     // request.addEventListener('load', event => {
     //     if (event.target.status === 200) {
     //         posts.innerHTML = event.target.responseText
@@ -16,27 +15,28 @@ search.addEventListener('input', () => {
     // request.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
     //
     // request.send(`action=foo&valuesomething=hello`)
-    // // &keyword=${search.value}
+    // &keyword=${search.value}
 
     const data = {
         action: 'data_fetch',
-        keyword: "h"
+        keyword: `${search.value}`
     }
 
-    fetch('./wp-content/themes/theme/save')
-    .then( r => r.text())
-    .then( r => console.log(r))
-    .catch(console.error)
+    fetch('./wp-admin/admin-ajax.php', {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        body: JSON.stringify(data)
+    })
 
-    // './wp-admin/admin-ajax.php'
+    .then( request => request.text())
+    .then( request => console.log(request))
+    .catch(console.error)
 
 })
 
-// headers: {
-//     'Content-Type': 'application/x-www-form-urlencoded'
-// },
-// method: "GET",
-// body: JSON.stringify(data)
+
 
 
 // const categoryButtons = document.querySelectorAll('li.category')
