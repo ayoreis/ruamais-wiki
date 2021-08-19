@@ -23,27 +23,21 @@ search.addEventListener('input', () => {
         keyword: "h"
     }
 
-    const request = fetch('./wp-content/themes/theme/styles.css', {
-        // headers: {
-        //     'Content-Type': 'application/x-www-form-urlencoded'
-        // },
-        method: "GET",
-        // body: JSON.stringify(data)
-    })
-
-    .then( r => {
-        r.text()
-    })
-
-    .then( r => {
-        console.log(r)
-    })
-
+    fetch('./wp-content/themes/theme/save')
+    .then( r => r.text())
+    .then( r => console.log(r))
     .catch(console.error)
 
     // './wp-admin/admin-ajax.php'
 
 })
+
+// headers: {
+//     'Content-Type': 'application/x-www-form-urlencoded'
+// },
+// method: "GET",
+// body: JSON.stringify(data)
+
 
 // const categoryButtons = document.querySelectorAll('li.category')
 //
