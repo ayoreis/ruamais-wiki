@@ -16,7 +16,7 @@ search.addEventListener('input', () => {
         body: `action=data_fetch&keyword=${search.value}`
     })
 
-    request.then(respinse => response.text())
+    request.then(response => response.text())
     request.then(response => posts.innerHTML = response)
     request.catch(console.error)
 
