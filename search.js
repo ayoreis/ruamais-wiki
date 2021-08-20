@@ -13,11 +13,10 @@ search.addEventListener('input', () => {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: 'POST',
-        body: `action=my_search&keyword=${search.value}`
+        body: `action=data_fetch&keyword=${search.value}`
     })
 
-    request.then(response => response.text())
-    request.then(response => console.log(response.body))
+    request.then(respinse => response.text())
     request.then(response => posts.innerHTML = response)
     request.catch(console.error)
 
