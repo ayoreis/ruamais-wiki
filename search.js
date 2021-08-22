@@ -19,8 +19,6 @@ search.addEventListener('input', () => {
     .then(response => response.text())
     .then(response => posts.innerHTML = response)
     .catch(console.error)
-
-    // ask about old code: is it creating a new "thing" each time?
 })
 
 
