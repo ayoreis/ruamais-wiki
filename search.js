@@ -7,7 +7,7 @@ search.addEventListener('input', () => {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
-        method: 'POST',
+        method: 'post',
         body: `action=my_search&keyword=${search.value}`
     })
 
