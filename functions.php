@@ -123,7 +123,7 @@
 
     // add_action('init', 'custom_post_type', 0 );
 
-    function data_fetch() {
+    function my_search() {
         $the_query = new WP_Query( array( 'posts_per_page' => -1, 's' => esc_attr($_POST['keyword']), 'post_type' => 'post' ) );
         if($the_query -> have_posts()):
             while($the_query -> have_posts()):
@@ -143,7 +143,7 @@
 
     }
 
-    add_action('wp_ajax_data_fetch', 'data_fetch'); // executed when logged in
-    add_action('wp_ajax_nopriv_data_fetch', 'data_fetch'); // executed when logged out
+    add_action('wp_ajax_my_search', 'my_search'); // executed when logged in
+    add_action('wp_ajax_nopriv_my_search', 'my_search'); // executed when logged out
 
 ?>

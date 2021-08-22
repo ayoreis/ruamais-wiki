@@ -3,17 +3,12 @@ const posts = document.querySelector('section.posts')
 
 search.addEventListener('input', () => {
 
-    const data = {
-        action: 'data_fetch',
-        keyword: `${search.value}`
-    }
-
     fetch('./wp-admin/admin-ajax.php', {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
         method: 'POST',
-        body: `action=data_fetch&keyword=${search.value}`
+        body: `action=my_search&keyword=${search.value}`
     })
 
     .then(response => response.text())
