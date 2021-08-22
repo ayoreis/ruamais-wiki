@@ -8,7 +8,7 @@ search.addEventListener('input', () => {
         keyword: `${search.value}`
     }
 
-    const request = fetch('./wp-admin/admin-ajax.php', {
+    fetch('./wp-admin/admin-ajax.php', {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         },
@@ -16,17 +16,18 @@ search.addEventListener('input', () => {
         body: `action=data_fetch&keyword=${search.value}`
     })
 
-    request.then(response => response.text())
-    request.then(response => posts.innerHTML = response)
-    request.catch(console.error)
+    .then(response => response.text())
+    .then(response => posts.innerHTML = response)
+    .catch(console.error)
 
+    // ask about old code: is it creating a new "thing" each time?
 })
 
 
-// const categoryButtons = document.querySelectorAll('li.category')
-//
-// categoryButtons.forEach( categoryButton => {
-//     categoryButton.addEventListener('click', event => {
-//         console.log(event.target.dataset.category);
-//     })
-// })
+const categoryButtons = document.querySelectorAll('li.category')
+
+categoryButtons.forEach( categoryButton => {
+    categoryButton.addEventListener('click', event => {
+        console.log(event.target.dataset.category);
+    })
+})
